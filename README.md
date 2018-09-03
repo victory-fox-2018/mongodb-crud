@@ -1,1 +1,3 @@
-# mongodb-crud
+# Mongodb-crud
+
+GET, POST, DELETE, PUT, PATCH
