@@ -15,10 +15,13 @@ router.post('/',(req,res)=>{
     BookController.insertData(req,res)
 })
 
+// update individual data
+router.put('/edit/:id',(req,res)=>{
+    BookController.updateData(req,res);
+})
+
 // delete data
 router.delete('/delete/:id',(req,res)=>{
-    // console.log('TEST',req.params.id)
-    // res.send(req.params.id)
     BookController.deleteData(req,res)
 })
 
