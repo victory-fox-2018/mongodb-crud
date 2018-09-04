@@ -69,7 +69,7 @@ module.exports = {
       }
       else{
         res.status(500).json({
-          msg : "failed adding to database"
+          msg : "failed connecting to database"
         });
 
       }
@@ -101,7 +101,7 @@ module.exports = {
           }
           else{
             res.status(500).json({
-              msg : "failed adding to database"
+              msg : "failed updating to database"
             });
           }
         });
@@ -109,7 +109,7 @@ module.exports = {
 
       else{
         res.status(500).json({
-          msg : "failed adding to database"
+          msg : "failed connecting to database"
         });
       }
     });
