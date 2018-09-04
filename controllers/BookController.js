@@ -1,9 +1,10 @@
 'use strict'
 
 const MongoClient = require('mongodb').MongoClient;
-const assert = require('assert');
+// const assert = require('assert');
 const url = 'mongodb://localhost:27017';
 const dbname = 'library'
+const ObjectId = require('mongodb').ObjectId
 
 class BookController {
 
@@ -49,7 +50,28 @@ class BookController {
                 client.close();
             })
         })
+    }
 
+    // Delete data 
+    static deleteData(req,res){
+        let deleteId = ObjectId(req.params.id)
+
+
+        console.log('TEST',deleteId)
+        MongoClient.connect(url,function(err,client){
+            console.log('Connected to the server');
+
+            const db = client.db(dbname);
+            const col = db.collection('bookscollection');
+
+            col.deleteOne({_id : deleteId},function(err,row){
+                if(!err){
+                    res.status(200).json({msg : 'Data has been deleted'})
+                }else{
+                    res.status(500).json({msg : err});
+                }
+            })
+        })
     }
 }
 
