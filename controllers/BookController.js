@@ -26,12 +26,12 @@ class BookController {
     }
 
     // insert data
-    static insertData(objCreate){
-        let isbn = objCreate['isbn'];
-        let title = objCreate['title'];
-        let author = objCreate['author'];
-        let category = objCreate['category'];
-        let stock = parseInt(objCreate['stock'])
+    static insertData(req,res){
+        let isbn = req.body['isbn'];
+        let title = req.body['title'];
+        let author = req.body['author'];
+        let category = req.body['category'];
+        let stock = parseInt(req.body['stock'])
 
         MongoClient.connect(url,function(err,client){
             console.log('Connected to the server')
@@ -41,7 +41,11 @@ class BookController {
 
             col.insertOne({isbn : isbn,title : title, author : author, category : category, stock : stock},
                 function(err,row){
-                
+                    if(!err){
+                        res.status(200).json({msg : 'Data has been saved'})
+                    }else{
+                        res.status(500).json({msg : err})
+                    }
                 client.close();
             })
         })

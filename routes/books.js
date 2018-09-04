@@ -9,4 +9,8 @@ router.get('/',(req,res)=>{
     BookController.getAllData(req,res);
 })
 
+router.post('/',(req,res)=>{
+    BookController.insertData(req,res)
+})
+
 module.exports = router
