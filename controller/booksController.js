@@ -42,7 +42,6 @@ module.exports = {
       const db = client.db(dbName);
       if(!err){
         console.log("Connected successfully to server");
-        console.log("mashook pa eko");
         const collection = db.collection("books");
         const obj = {
           isbn : req.body.isbn,
@@ -81,7 +80,6 @@ module.exports = {
       const db = client.db(dbName);
       if(!err){
         console.log("Connected successfully to server");
-        console.log("mashook pa eko");
         const collection = db.collection("books");
         console.log(req.params.id);
 
