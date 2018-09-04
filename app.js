@@ -2,18 +2,12 @@ require('dotenv').config()
 const cors = require('cors')
 const express = require('express')
 const app = require('express')()
-const MongoClient = require('mongodb').MongoClient;
-const url = 'mongodb://localhost:27017/mongodb-db';
-
-MongoClient.connect(url, function (err, db) {
-    if (err) throw err;
-    console.log("Database created!");
-    db.close();
-});
+const router = require('./routes')
 
 app.use(express.urlencoded({extended: false}))
 app.use(express.json())
 app.use(cors())
+app.use('/', router)
 
 const port = process.env.PORT || 3000
 
