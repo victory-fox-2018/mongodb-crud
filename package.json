@@ -1,0 +1,27 @@
+{
+  "name": "mongodb-crud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.16.3",
+    "mongodb": "^3.1.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivannsu/mongodb-crud.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ivannsu/mongodb-crud/issues"
+  },
+  "homepage": "https://github.com/ivannsu/mongodb-crud#readme"
+}
