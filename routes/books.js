@@ -20,6 +20,10 @@ router.put('/edit/:id',(req,res)=>{
     BookController.updateData(req,res);
 })
 
+router.patch('/edit/:id',(req,res)=>{
+    BookController.updateIndividual(req,res);
+})
+
 // delete data
 router.delete('/delete/:id',(req,res)=>{
     BookController.deleteData(req,res)

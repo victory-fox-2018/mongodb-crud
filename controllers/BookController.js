@@ -62,9 +62,6 @@ class BookController {
             const db = client.db(dbname);
             const col = db.collection('bookscollection');
 
-            // console.log('----------')
-            // console.log('TEST',req.body)
-
             col.updateOne({_id : updatedId},{$set : {
                 isbn : req.body['isbn'],
                 title : req.body['title'],
@@ -76,6 +73,31 @@ class BookController {
                     res.status(200).json({msg : 'Data has been updated'});
                 }else {
                     res.status(500).json({msg : err})
+                }
+            })
+        })
+    }
+
+    static updateIndividual(req,res){
+        let updatedId = ObjectId(req.params.id);
+
+        MongoClient.connect(url,function(err,client){
+            console.log('Connected to the server')
+
+            const db = client.db(dbname);
+            const col = db.collection('bookscollection');
+
+            col.updateOne({_id : updatedId},{$set : {
+                isbn : req.body['isbn'],
+                title : req.body['title'],
+                author: req.body['author'],
+                category: req.body['category'],
+                stock : req.body['stock']
+            }},function(err,doc) {
+                if(!err){
+                    res.status(200).json({msg : 'Data has been updated'})
+                }else {
+                    res.status(500).json({msg : err});
                 }
             })
         })
