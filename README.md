@@ -4,16 +4,48 @@ List of user routes:
 
 | Route                 |  HTTP  | Desription                                                   |
 | --------------------- |:------:| ------------------------------------------------------------ |
-| /signup               | POST   | Sign up withh new user info                                  |
-| /signin               | POST   | Sign in while get an access token based on credentials       |
-| /users                | GET    | Get all the users info (admin only)                          |
-| /users/:id            | GET    | Get a single user info (admin and authenticated user)        |
-| /users                | POST   | Create a user (admin only)                                   |
-| /users/:id            | DELETE | Delete a user (admin only)                                   |
-| /users/:id            | PUT    | Update a user with new info (admin and authenticated user)   |
+| /books                | GET    | Show All books Data                                          |
+| /books/:id            | GET    | Get a single book info                                       |
+| /books/:id            | DELETE | Delete Single Book                                           |
+| /books                | POST   | Create a book                                                |
+| /books/:id            | PUT    | Update a book with new info                                  |
 
-
+Get All Books Data
 ```
 Example :
-http://localhost:3000/
+http://localhost:3000/books
+
+output :
+{
+    "message": "Show All Books",
+    "books": [
+        {
+            "_id": "5b8e011ee99dfd2ae4bc666b",
+            "isbn": "978-1-60309-057-5",
+            "title": "Pukulan Naga",
+            "author": "James Kochalka",
+            "category": "All Ages",
+            "stock": "3"
+        }
+    ]
+}
+```
+
+Get a Single Book Info
+```
+Example :
+http://localhost:3000/books/5b8e011ee99dfd2ae4bc666b
+
+output : 
+{
+    "message": "Successfully find Book",
+    "book": {
+        "_id": "5b8e011ee99dfd2ae4bc666b",
+        "isbn": "978-1-60309-057-5",
+        "title": "Pukulan Naga",
+        "author": "James Kochalka",
+        "category": "All Ages",
+        "stock": "3"
+    }
+}
 ```

@@ -36,7 +36,6 @@ module.exports = {
         keys.forEach((key, index) => {
             dataBook[key] = values[index]
         })
-        // res.send(dataBook)
 
         MongoClient.connect(url, function(err, client) {
             err ? console.log(err) : console.log("Connected successfully to server");
