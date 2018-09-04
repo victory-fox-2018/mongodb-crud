@@ -1,9 +1,4 @@
-# mongodb-crud
-
-Route            | HTTP |        Description        
------------------|------|---------------------------
-  api/           | GET  | Print hello               
-
+# mongodb-crud: Library
 
 List of user routes:
 
