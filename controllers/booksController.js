@@ -16,6 +16,7 @@ class booksController {
         } else {
           res.status(200).json({data: result})
         }
+        client.close();
       })
     });
   }
@@ -31,6 +32,7 @@ class booksController {
         } else {
           res.status(200).json({data: result})
         }
+        client.close();
       })
     });
   }
@@ -78,6 +80,7 @@ class booksController {
         } else {
           res.status(200).json({message: `Book with id ${req.params.id} updated`})
         }
+        client.close();
       })
     })
   }
@@ -95,6 +98,7 @@ class booksController {
         } else {
           res.status(200).json({message: `Book with id ${req.params.id} deleted`})
         }
+        client.close();
       })
     })
   }
