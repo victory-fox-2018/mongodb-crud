@@ -76,45 +76,6 @@ module.exports = {
     });
   },
 
-  update : function(req,res){
-    MongoClient.connect(url, function(err, client) {
-      const db = client.db(dbName);
-      if(!err){
-        console.log("Connected successfully to server");
-        console.log("mashook pa eko");
-        const collection = db.collection("books");
-        const obj = {
-          isbn : req.body.isbn,
-          title : req.body.title,
-          author : req.body.author,
-          category : req.body.category,
-          stock : req.body.stock
-        };
-
-        collection.update({_id: new mongodb.ObjectID(req.params.id)},{$set: obj},(err,ress)=>{
-          if(!err){
-            res.status(200).json({
-              msg : `Updated the document with the id a equal to ${req.params.id}`,
-              data : ress
-            });
-            client.close();
-          }
-          else{
-            res.status(500).json({
-              msg : "failed updating to database"
-            });
-          }
-        });
-      }
-
-      else{
-        res.status(500).json({
-          msg : "failed connecting to database"
-        });
-      }
-    });
-  },
-
   remove : function(req,res){
     MongoClient.connect(url, function(err, client) {
       const db = client.db(dbName);
@@ -147,7 +108,7 @@ module.exports = {
     });
   },
 
-  updatePatch : function(req,res){
+  update : function(req,res){
     MongoClient.connect(url, function(err, client) {
       const db = client.db(dbName);
       if(!err){
