@@ -145,5 +145,37 @@ module.exports = {
         });
       }
     });
+  },
+
+  updatePatch : function(req,res){
+    MongoClient.connect(url, function(err, client) {
+      const db = client.db(dbName);
+      if(!err){
+        console.log("Connected successfully to server");
+        const collection = db.collection("books");
+        const updateObject = req.body;
+
+        collection.update({_id: new mongodb.ObjectID(req.params.id)},{$set: updateObject}, function(err, result) {
+          if(!err){
+            res.status(200).json({
+              msg : `Updated the document with the id a equal to ${req.params.id}`,
+              data : result
+            });
+            client.close();
+          }
+          else{
+            res.status(500).json({
+              msg : "failed updating to database"
+            });
+          }
+        });
+      }
+
+      else{
+        res.status(500).json({
+          msg : "failed connecting to database"
+        });
+      }
+    });
   }
 };
