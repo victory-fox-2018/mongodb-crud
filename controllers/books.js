@@ -77,8 +77,8 @@ class Book {
   static update(req, res) {
     MongoClient.connect(url, (err, client) => {
       console.log(`Books collection will be updated soon`);
+
       const db = client.db(dbName);
-      
       let update = {};
       let keys = Object.keys(req.body);
       let values = Object.values(req.body);
@@ -89,8 +89,6 @@ class Book {
       let id = ObjectId(req.params.id);
       let query = ({_id: id});
       const newValues = {$set: update};
-      // console.log(update);
-      
       db.collection('books').updateOne(query, newValues, (err, book) => {
         if(err) {
           res.status(400).json({
@@ -110,6 +108,7 @@ class Book {
 
       })
     })
+    
   }
 
   static erase(req, res) {
