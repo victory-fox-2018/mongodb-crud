@@ -1,6 +1,6 @@
 # mongodb-crud: Library
 
-List of user routes:
+List of books routes:
 
   Route           | HTTP    |            Description                                     
 ------------------|---------|------------------------------------------------------------
